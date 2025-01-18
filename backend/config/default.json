@@ -4,5 +4,8 @@
   },
   "CLIENT": {
     "URL": "http://localhost:5173"
+  },
+  "MONGO": {
+    "URI": "mongodb+srv://gaurijagdalepatil:GauriDBpass@cluster0.6tcro.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"
   }
 }

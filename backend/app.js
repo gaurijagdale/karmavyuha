@@ -3,10 +3,11 @@ const express = require('express');
 const config = require('config');
 const cors = require('cors'); 
 const app = express();
+const mongoose = require('mongoose');
 
-const routes = require('./routes/index');
+const loginRouter = require('./routes/Login.route');
 
-const port = config.get('SERVER.PORT') || 3000;
+const PORT = config.get('SERVER.PORT') || 3000;
 
 app.use(cors({ 
     origin: config.get('CLIENT.URL') 
@@ -15,8 +16,22 @@ app.use(cors({
 app.use(express.json()); 
 app.use(express.urlencoded({ extended: true })); 
 
-app.use('/user', routes);
+const MONGO_URI = config.get('MONGO.URI');
 
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
+function connectToDB() {
+  mongoose.connect(MONGO_URI)
+      .then(() => {
+          console.log("Connected to DB");
+      })
+      .catch((error) => {
+          console.error("Error connecting to DB:", error.message);
+      });
+}
+
+connectToDB();
+
+app.use('/api', loginRouter);
+
+app.listen(PORT, () => {
+  console.log(`Server is running on port ${PORT}`);
 });

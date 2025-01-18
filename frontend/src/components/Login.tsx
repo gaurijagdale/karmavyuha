@@ -1,9 +1,50 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+
+interface LoginResponse {
+  message: string;
+  // Add other properties that your response may contain
+}
 
 const Login = () => {
+  const VITE_BACKEND_URL = import.meta.env.VITE_BACKEND_URL;
+
+  const [userEmail, setUserEmail] = useState<string>("");
+  const [userPassword, setUserPassword] = useState<string>("");
+  const [loginMessage, setLoginMessage] = useState<string>("");
+
+  // Define the type of the response you expect from the server
+  const handleLogin = async (event: React.FormEvent) => {
+    event.preventDefault(); // Prevent form from submitting and reloading the page
+    console.log(userEmail, userPassword);
+
+    try {
+      // Send a POST request using axios
+      const response = await axios.post<LoginResponse>(
+        `${VITE_BACKEND_URL}/api/login`,
+        {
+          email: userEmail,
+          password: userPassword,
+        },
+        {
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      );
+
+      // Handle response data
+      console.log("Login successful:", response.data);
+      setLoginMessage(response.data.message); // Assuming 'message' is in the response
+    } catch (error: unknown) {
+      console.error("Error logging in:", error);
+      setLoginMessage("Login failed. Please try again."); // Handle failure
+    }
+  };
+
   return (
     <div>
-      <form className="max-w-sm mx-auto">
+      <form method="post" onSubmit={handleLogin} className="max-w-sm mx-auto">
         <div className="mb-5">
           <label
             htmlFor="email"
@@ -14,6 +55,9 @@ const Login = () => {
           <input
             type="email"
             id="email"
+            name="email"
+            value={userEmail}
+            onChange={(e) => setUserEmail(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             placeholder="name@flowbite.com"
             required
@@ -29,11 +73,14 @@ const Login = () => {
           <input
             type="password"
             id="password"
+            name="password"
+            value={userPassword}
+            onChange={(e) => setUserPassword(e.target.value)}
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             required
           />
         </div>
-        <div className="flex items-start mb-5">
+        {/* <div className="flex items-start mb-5">
           <div className="flex items-center h-5">
             <input
               id="remember"
@@ -43,7 +90,7 @@ const Login = () => {
               required
             />
           </div>
-        </div>
+        </div> */}
         <button
           type="submit"
           className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm w-full sm:w-auto px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
@@ -51,6 +98,11 @@ const Login = () => {
           Submit
         </button>
       </form>
+      {loginMessage && (
+        <p className="mt-3 text-center text-sm text-red-500 dark:text-red-400">
+          {loginMessage}
+        </p>
+      )}
     </div>
   );
 };
