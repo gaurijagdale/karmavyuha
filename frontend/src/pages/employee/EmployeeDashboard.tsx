@@ -3,8 +3,11 @@ import TextGen from "@/components/TextGen";
 import { AnimatedList } from "@/components/magicui/animated-list";
 import { Link } from "react-router-dom";
 import Notification from "../../components/Notification";
+import { Calendar } from "@/components/ui/calendar";
 
 const EmployeeDashboard = () => {
+  const [date, setDate] = React.useState<Date | undefined>(new Date());
+
   return (
     <div className="w-full grid grid-cols-3 p-10 h-screen gap-4">
       <div aria-label="left" className="flex flex-col col-span-2 gap-4">
@@ -36,9 +39,7 @@ const EmployeeDashboard = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-1 bg-gray-900 h-96 p-7">
             <h1 className="text-3xl font-semibold">Upcoming Projects</h1>
-            <div>
-
-            </div>
+            <div></div>
           </div>
           <div className="col-span-1 p-7 bg-gray-900 h-96 space-y-3">
             <h1 className="text-3xl font-semibold">To Do</h1>
@@ -191,7 +192,14 @@ const EmployeeDashboard = () => {
             />
           </div>
         </div>
-        <TextGen />
+        <div className="h-96  flex items-center justify-center">
+          <Calendar
+            mode="single"
+            selected={date}
+            onSelect={setDate}
+            className="p-7 h-80 rounded-md border text-xl"
+          />
+        </div>
       </div>
     </div>
   );
