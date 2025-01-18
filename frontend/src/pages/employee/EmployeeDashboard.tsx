@@ -1,6 +1,8 @@
 import React from "react";
 import TextGen from "@/components/TextGen";
+import { AnimatedList } from "@/components/magicui/animated-list";
 import { Link } from "react-router-dom";
+import Notification from "../../components/Notification";
 
 const EmployeeDashboard = () => {
   return (
@@ -32,7 +34,46 @@ const EmployeeDashboard = () => {
       </div>
 
       <div aria-label="right" className="col-span-1 flex flex-col gap-4">
-        <div className="h-96 bg-gray-900 rounded-xl">Notifications</div>
+        <div className="h-96 p-5 bg-gray-900 rounded-xl space-y-3">
+            <h1 className="text-3xl font-semibold">Notifications</h1>
+            <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-transparent">
+            <Notification 
+              name="Sample Notification" 
+              description="This is a sample notification" 
+              icon="info" 
+              color="green" 
+              time="10:00 AM" 
+            />
+            <Notification 
+                name="Another Notification" 
+                description="This is another sample notification" 
+                icon="alert" 
+                color="red" 
+                time="11:00 AM" 
+            />
+            <Notification 
+                name="Another Notification" 
+                description="This is another sample notification" 
+                icon="alert" 
+                color="red" 
+                time="11:00 AM" 
+            />
+            <Notification 
+                name="Another Notification" 
+                description="This is another sample notification" 
+                icon="alert" 
+                color="red" 
+                time="11:00 AM" 
+            />
+            <Notification 
+                name="Another Notification" 
+                description="This is another sample notification" 
+                icon="alert" 
+                color="red" 
+                time="11:00 AM" 
+            />
+            </div>
+        </div>
         <TextGen />
       </div>
     </div>
