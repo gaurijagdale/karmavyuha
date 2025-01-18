@@ -6,6 +6,7 @@ const app = express();
 const mongoose = require('mongoose');
 
 const loginRouter = require('./routes/Login.route');
+const worqhatRouter = require('./routes/Worqhat.route');
 
 const PORT = config.get('SERVER.PORT') || 3000;
 
@@ -31,6 +32,7 @@ function connectToDB() {
 connectToDB();
 
 app.use('/api', loginRouter);
+app.use('/api/models', worqhatRouter);
 
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);

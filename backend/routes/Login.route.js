@@ -6,9 +6,7 @@ const router = express.Router();
 router.post("/login", (req, res) => {
     console.log(req.body)
     const { email, password } = req.body;
-
-
-console.log(email, password);
+    console.log(email, password);
     res.json({ message: "Login route" });
 });
 
