@@ -1,4 +1,5 @@
 import React from 'react'
+import TextGen from '@/components/TextGen'
 
 const EmployeeDashboard = () => {
     return (
@@ -14,7 +15,7 @@ const EmployeeDashboard = () => {
 
             <div aria-label='right' className='col-span-1 flex flex-col gap-4'>
                 <div className='h-96 bg-gray-900 rounded-xl'>Notifications</div>
-                <div className='h-96 bg-gray-900 rounded-xl'>ChatGPT</div>
+                <TextGen />
             </div>
         </div>
     )
