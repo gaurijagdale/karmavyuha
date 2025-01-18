@@ -1,6 +1,8 @@
 const express = require('express');
 const axios = require('axios');
 const router = express.Router();
+const config = require('config');
+const worqhatapikey = config.get('WORQHAT.APIKEY');
 
 // Define your routes here
 router.post('/text', async (req, res) => {
@@ -23,7 +25,7 @@ router.post('/text', async (req, res) => {
     url: 'https://api.worqhat.com/api/ai/content/v4',
     headers: {
       'Content-Type': 'application/json',
-      "Authorization": "Bearer sk-b2c813ce06a64b2eb319ad9c23a7d6aa",
+      "Authorization": `Bearer ${worqhatapikey}` ,
     },
     data: data,
   };
