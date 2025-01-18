@@ -23,11 +23,11 @@ const GPT = () => {
         tabIndex={-1}
         aria-labelledby="drawer-right-label"
       >
-        {/* <h5
+        <h5
           id="drawer-right-label"
-          className="inline-flex items-center mb-4 text-base font-semibold text-gray-500 dark:text-gray-400"
+          className="inline-flex items-center mb-4 mt-4 text-base font-semibold text-gray-500 dark:text-gray-400"
         >
-          <svg
+          {/* <svg
             className="w-4 h-4 me-2.5"
             aria-hidden="true"
             xmlns="http://www.w3.org/2000/svg"
@@ -35,9 +35,11 @@ const GPT = () => {
             viewBox="0 0 20 20"
           >
             <path d="M10 .5a9.5 9.5 0 1 0 9.5 9.5A9.51 9.51 0 0 0 10 .5ZM9.5 4a1.5 1.5 0 1 1 0 3 1.5 1.5 0 0 1 0-3ZM12 15H8a1 1 0 0 1 0-2h1v-3H8a1 1 0 0 1 0-2h2a1 1 0 0 1 1 1v4h1a1 1 0 0 1 0 2Z" />
-          </svg>
-          Right drawer
-        </h5> */}
+          </svg> */}
+          Hello I'm your personal AI assistant
+          <br />
+          How can I help you today?
+        </h5>
         <button
           type="button"
           data-drawer-hide="drawer-right-example"
