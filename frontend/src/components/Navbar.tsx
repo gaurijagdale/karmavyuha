@@ -13,6 +13,7 @@ const Navbar = () => {
             <Link to="/employeedashboard"><Button variant="outline">Overview Emp</Button></Link>
             <Link to="/employeeprojects"><Button variant="outline">Projects</Button></Link>
             <Link to="/employeeleaderboard"><Button variant="outline">Leaderboard</Button></Link>
+            
             <Link to="/login"><Button variant="outline">Login</Button></Link>
         </div>
     )
