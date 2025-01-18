@@ -12,21 +12,21 @@ const EmployeeDashboard = () => {
           <h1 className="text-3xl font-semibold">Current Projects</h1>
           <div className="flex flex-col gap-4">
             <div className="flex justify-between">
-              <Link to="" className="text-xl font-medium">
+              <Link to="/projectspecific" className="text-xl font-medium">
                 Project A
               </Link>
               <h2 className="text-base text-zinc-200">75% Complete</h2>
             </div>
             <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
             <div className="flex justify-between">
-              <Link to="" className="text-xl font-medium">
+              <Link to="/projectspecific" className="text-xl font-medium">
                 Project B
               </Link>
               <h2 className="text-base text-zinc-200">75% Complete</h2>
             </div>
             <hr className="h-px bg-gray-500 border-0 dark:bg-gray-700" />
             <div className="flex justify-between">
-              <Link to="" className="text-xl font-medium">
+              <Link to="/projectspecific" className="text-xl font-medium">
                 Project C
               </Link>
               <h2 className="text-base text-zinc-200">75% Complete</h2>
@@ -36,11 +36,14 @@ const EmployeeDashboard = () => {
         <div className="grid grid-cols-2 gap-4">
           <div className="col-span-1 bg-gray-900 h-96 p-7">
             <h1 className="text-3xl font-semibold">Upcoming Projects</h1>
+            <div>
+
+            </div>
           </div>
           <div className="col-span-1 p-7 bg-gray-900 h-96 space-y-3">
             <h1 className="text-3xl font-semibold">To Do</h1>
-            <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-transparent">
-              <ol className="space-y-4 w-72">
+            <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-hide">
+              <ol className="space-y-4 w-full">
                 <li>
                   <div
                     className="w-full p-4 text-green-700 border border-green-300 rounded-lg bg-green-50 dark:bg-gray-800 dark:border-green-800 dark:text-green-400"
@@ -150,7 +153,7 @@ const EmployeeDashboard = () => {
       <div aria-label="right" className="col-span-1 flex flex-col gap-4">
         <div className="h-96 p-5 bg-gray-900 rounded-xl space-y-3">
           <h1 className="text-3xl font-semibold">Notifications</h1>
-          <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-thin scrollbar-thumb-zinc-400 scrollbar-track-transparent">
+          <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-hide">
             <Notification
               name="Sample Notification"
               description="This is a sample notification"

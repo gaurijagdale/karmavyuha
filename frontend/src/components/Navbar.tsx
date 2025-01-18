@@ -1,6 +1,7 @@
 import React from 'react'
 import { Button } from "@/components/ui/button"
 import { Link } from 'react-router-dom'
+import GPT from './GPT'
 
 
 const Navbar = () => {
@@ -13,7 +14,7 @@ const Navbar = () => {
             <Link to="/employeedashboard"><Button variant="outline">Overview Emp</Button></Link>
             <Link to="/employeeprojects"><Button variant="outline">Projects</Button></Link>
             <Link to="/employeeleaderboard"><Button variant="outline">Leaderboard</Button></Link>
-            
+            <button><GPT/></button>
             <Link to="/login"><Button variant="outline">Login</Button></Link>
         </div>
     )

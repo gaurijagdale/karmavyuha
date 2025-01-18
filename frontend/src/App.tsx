@@ -1,4 +1,5 @@
 import React from "react";
+import "flowbite";
 import {
   BrowserRouter as Router,
   Routes,
