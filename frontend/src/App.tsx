@@ -14,6 +14,8 @@ import EmployeeDashboard from "./pages/employee/EmployeeDashboard";
 import EmpProjects from "./pages/employee/EmpProjects";
 import EmpLeaderboard from "./pages/employee/EmpLeaderboard";
 import ProjectSpecific from "./pages/employee/ProjectSpecific";
+import EmpProfile from "./pages/employee/EmpProfile";
+import EmpReport from "./pages/employee/EmpReport";
 
 const App = () => {
   const location = useLocation(); 
@@ -23,9 +25,11 @@ const App = () => {
       {location.pathname !== "/login" && <Navbar />}
       <Routes>
         <Route path="/" element={<LandingMain />} />
-        <Route path="/projectspecific" element={<ProjectSpecific/>} />
         <Route path="/employeedashboard" element={<EmployeeDashboard />} />
+        <Route path="/empprofile/:id" element={<EmpProfile/>} />
+        <Route path="/empreport/:id" element={<EmpReport/>} />
         <Route path="/employeeprojects" element={<EmpProjects />} />
+        <Route path="/projectspecific/:id" element={<ProjectSpecific/>} />
         <Route path="/employeeleaderboard" element={<EmpLeaderboard />} />
         <Route path="/employeedashboard" element={<EmployeeDashboard />} />
         <Route path="/login" element={<Login />} />

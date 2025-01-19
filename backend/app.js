@@ -12,6 +12,7 @@ const Manager = require('./models/Manager.model');
 
 const loginRouter = require('./routes/Login.route');
 const worqhatRouter = require('./routes/Worqhat.route');
+const fetchRouter = require('./routes/Fetching.route');
 
 const PORT = config.get('SERVER.PORT') || 3000;
 
@@ -39,25 +40,7 @@ connectToDB();
 app.use('/api', loginRouter);
 app.use('/api/models', worqhatRouter);
 
-app.get('employee', async (req, res) => {
-    const employees = await Employee.find();
-    res.json(employees);
-});
-
-app.get('project', async (req, res) => {
-    const projects = await Project.find();
-    res.json(projects);
-});
-
-app.get('task', async (req, res) => {
-    const tasks = await Task.find();
-    res.json(tasks);
-});
-
-app.get('manager', async (req, res) => {
-    const managers = await Manager.find();
-    res.json(managers);
-});
+app.use('/api/fetch', fetchRouter);
 
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
