@@ -5,6 +5,26 @@ const Project = require("../models/Project.model");
 const Manager = require("../models/Manager.model");
 const Task = require("../models/Task.model");
 const Employee = require("../models/Employee.model");
+const User = require("../models/User.model");
+
+
+router.get("/user/:email", async (req, res) => {
+    try {
+        const email = req.params.email;
+
+        // Fetch the user details
+        const user = await User.findOne({ email: email });
+
+        if (!user) {
+            return res.status(404).json({ message: "User not found" });
+        }
+
+        res.json(user);
+        console.log(user);
+    } catch (error) {
+        res.status(500).json({ message: "Server error" });
+    }
+});
 
 router.get("/projects", async (req, res) => {
     try {

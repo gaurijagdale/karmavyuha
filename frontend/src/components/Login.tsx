@@ -1,5 +1,7 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
+import { AuthContext } from '../contexts/AuthContext';
+
 
 interface LoginResponse {
   message: string;
@@ -12,11 +14,13 @@ const Login = () => {
   const [userEmail, setUserEmail] = useState<string>("");
   const [userPassword, setUserPassword] = useState<string>("");
   const [loginMessage, setLoginMessage] = useState<string>("");
+  const authContext = useContext(AuthContext);
+  const { isLoggedIn, setIsLoggedIn, email, setEmail } = authContext;
+
 
   // Define the type of the response you expect from the server
   const handleLogin = async (event: React.FormEvent) => {
     event.preventDefault(); // Prevent form from submitting and reloading the page
-    console.log(userEmail, userPassword);
 
     try {
       // Send a POST request using axios
@@ -36,7 +40,9 @@ const Login = () => {
       // Handle response data
       console.log("Login successful:", response.data);
       setLoginMessage(response.data.message); // Assuming 'message' is in the response
-    } catch (error: unknown) {
+      setIsLoggedIn(true);
+      setEmail(userEmail);
+      } catch (error: unknown) {
       console.error("Error logging in:", error);
       setLoginMessage("Login failed. Please try again."); // Handle failure
     }

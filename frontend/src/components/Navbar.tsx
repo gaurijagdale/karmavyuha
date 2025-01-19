@@ -1,15 +1,41 @@
-import React from 'react'
+import React, {useContext, useEffect, useState} from 'react'
+import axios from 'axios'
 import { Button } from "@/components/ui/button"
 import { Link } from 'react-router-dom'
 import GPT from './GPT'
+import logo from '../assets/Logo.png'
+import logoo from '../assets/Logoo.jpg'
 
+import {AuthContext}  from "../contexts/AuthContext";
+
+interface User {
+    _id: string;
+    email: string;
+    password: string;
+    role: string;
+}    
 
 const Navbar = () => {
+
+    const authContext = useContext(AuthContext);
+    const { isLoggedIn, setIsLoggedIn, email, setEmail } = authContext;
+    const [user, setUser] = useState<User | null>(null);
+
+    useEffect(() => {
+        if (email) {
+            axios.get(`${import.meta.env.VITE_BACKEND_URL}/api/fetch/user/${email}`)
+                .then(response => setUser(response.data))
+                .catch(error => console.error('Error fetching user:', error));
+        }
+    }, [email]);
+
+    console.log('user:', user?.role);
+
     const empID = '678c35d42382e89dad523e48';
     return (
         <div className='w-full flex justify-between items-center p-4 bg-gray-900'>
             <Link to="/">
-                <div>Logo</div>
+                <img src={logo} alt="" className='w-28 rounded-full object-cover'/>
             </Link>
 
             <Link to="/employeedashboard"><Button variant="outline">Overview Emp</Button></Link>
