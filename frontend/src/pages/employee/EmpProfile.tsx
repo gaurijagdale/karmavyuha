@@ -1,8 +1,30 @@
 import React, { useEffect, useState } from "react";
 import { useParams, useNavigate } from "react-router-dom";
-import profile from '../../assets/profile2.png'
+import profile from "../../assets/profile2.png";
+import { Bar, BarChart, CartesianGrid, XAxis } from "recharts"
+import { ChartConfig, ChartContainer } from "@/components/ui/chart";
 
 const EmpProfile: React.FC = () => {
+  const chartData = [
+    { month: "January", desktop: 186, mobile: 80 },
+    { month: "February", desktop: 305, mobile: 200 },
+    { month: "March", desktop: 237, mobile: 120 },
+    { month: "April", desktop: 73, mobile: 190 },
+    { month: "May", desktop: 209, mobile: 130 },
+    { month: "June", desktop: 214, mobile: 140 },
+  ];
+
+  const chartConfig = {
+    desktop: {
+      label: "Desktop",
+      color: "#2563eb",
+    },
+    mobile: {
+      label: "Mobile",
+      color: "#60a5fa",
+    },
+  } satisfies ChartConfig;
+
   const { id } = useParams<{ id: string }>(); // Get the employee ID from the URL
   const [employeeData, setEmployeeData] = useState<any>(null);
   const [loading, setLoading] = useState<boolean>(true);
@@ -47,55 +69,78 @@ const EmpProfile: React.FC = () => {
       <div className="bg-gray-900 p-6 rounded-xl text-white space-y-4 flex items-center justify-between">
         <h1 className="text-2xl font-bold">Employee Profile</h1>
         <button
-          className="text-2xl font-bold bg-green-500"
+          className="text-2xl font-semibold rounded-full py-2 px-5 bg-slate-500"
           onClick={handleGenReport}
         >
-          Generate Report
+        Report
         </button>
       </div>
 
       {/* Employee Basic Info */}
-      <div className="flex bg-gray-900 p-6 rounded-xl text-white space-y-4">
-        <img src={profile} alt="" className="w-52 h-52 rounded-full"/>
-        <div>
-          <h1 className="text-2xl font-bold">{emp.name}</h1>
-          <p>Email: {emp.email}</p>
-          <p>Phone: {emp.phoneNumber}</p>
-          <p>Date of Birth: {new Date(emp.dateOfBirth).toDateString()}</p>
-          <p>Address: {emp.address}</p>
-          <p>Department: {emp.department}</p>
-          <p>Salary: ₹{emp.salary}</p>
-          <p>Employment Status: {emp.employmentStatus}</p>
+      <div className="grid grid-cols-2 gap-14">
+        <div className=" col-span-1 flex flex-col justify-center items-center bg-gray-900 p-8 rounded-xl text-white space-y-4">
+          <img src={profile} alt="" className="w-52 h-52 rounded-full" />
+          <div className="flex flex-col justify-center items-center space-y-3">
+            <h1 className="text-2xl font-bold">{emp.name}</h1>
+            <div className="flex flex-col text-base text-zinc-300 justify-center items-center">
+              <p>Email: {emp.email}</p>
+              <p>Phone: {emp.phoneNumber}</p>
+              <p>Date of Birth: {new Date(emp.dateOfBirth).toDateString()}</p>
+              <p>Address: {emp.address}</p>
+              <p>Department: {emp.department}</p>
+              <p>Salary: ₹{emp.salary}</p>
+              <p>Employment Status: {emp.employmentStatus}</p>
+            </div>
+          </div>
+        </div>
+        <div className=" col-span-1 bg-gray-900 rounded-xl p-5 flex flex-col space-y-6 items-center justify-center">
+          <ChartContainer config={chartConfig} className="min-h-[200px] w-full">
+            <BarChart accessibilityLayer data={chartData}>
+              <CartesianGrid vertical={false} />
+              <XAxis
+                dataKey="month"
+                tickLine={false}
+                tickMargin={10}
+                axisLine={false}
+                tickFormatter={(value) => value.slice(0, 3)}
+              />
+              <Bar dataKey="desktop" fill="var(--color-desktop)" radius={4} />
+              <Bar dataKey="mobile" fill="var(--color-mobile)" radius={4} />
+            </BarChart>
+          </ChartContainer>
+          <h1 className="text-xl text-start">Progress Graph</h1>
         </div>
       </div>
 
       {/* Performance Metrics */}
-      <div className="bg-gray-900 p-6 rounded-xl text-white space-y-4">
-        <h2 className="text-xl font-bold">Performance</h2>
-        <p>Quality of Work: {emp.performance.qualityOfWork}/10</p>
-        <p>Timeliness: {emp.performance.timeliness}/10</p>
-        <p>Completed Tasks: {emp.performanceMetrics.completedTasks}</p>
-        <p>Task Failure Rate: {emp.performanceMetrics.taskFailureRate}%</p>
-        <p>Feedback Rating: {emp.performanceMetrics.feedbackRating}/10</p>
-      </div>
+      <div className="grid grid-cols-3 gap-5">
+        <div className=" col-span-1 bg-gray-900 p-6 rounded-xl text-white space-y-4">
+          <h2 className="text-xl font-bold">Performance</h2>
+          <p>Quality of Work: {emp.performance.qualityOfWork}/10</p>
+          <p>Timeliness: {emp.performance.timeliness}/10</p>
+          <p>Completed Tasks: {emp.performanceMetrics.completedTasks}</p>
+          <p>Task Failure Rate: {emp.performanceMetrics.taskFailureRate}%</p>
+          <p>Feedback Rating: {emp.performanceMetrics.feedbackRating}/10</p>
+        </div>
 
-      {/* GitHub Profile */}
-      <div className="bg-gray-900 p-6 rounded-xl text-white space-y-4">
-        <h2 className="text-xl font-bold">GitHub Profile</h2>
-        <p>Username: {emp.githubProfile.githubUsername}</p>
-        <p>Total Commits: {emp.githubProfile.totalCommits}</p>
-      </div>
+        {/* GitHub Profile */}
+        <div className=" col-span-1 bg-gray-900 p-6 rounded-xl text-white space-y-4">
+          <h2 className="text-xl font-bold">GitHub Profile</h2>
+          <p>Username: {emp.githubProfile.githubUsername}</p>
+          <p>Total Commits: {emp.githubProfile.totalCommits}</p>
+        </div>
 
-      {/* Skills */}
-      <div className="bg-gray-900 p-6 rounded-xl text-white space-y-4">
-        <h2 className="text-xl font-bold">Skills</h2>
-        <ul className="list-disc list-inside">
-          {emp.skills.map((skill: any) => (
-            <li key={skill._id}>
-              {skill.skillName} - {skill.proficiencyLevel}
-            </li>
-          ))}
-        </ul>
+        {/* Skills */}
+        <div className=" col-span-1 bg-gray-900 p-6 rounded-xl text-white space-y-4">
+          <h2 className="text-xl font-bold">Skills</h2>
+          <ul className="list-disc list-inside">
+            {emp.skills.map((skill: any) => (
+              <li key={skill._id}>
+                {skill.skillName} - {skill.proficiencyLevel}
+              </li>
+            ))}
+          </ul>
+        </div>
       </div>
 
       {/* Projects */}
