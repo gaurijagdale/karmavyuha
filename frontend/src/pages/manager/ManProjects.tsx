@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import AvatarCircles from "@/components/magicui/avatar-circles";
@@ -7,7 +7,7 @@ import profile from "../../assets/profile2.png";
 const ManProjects = () => {
   const avatars = [
     {
-      imageUrl: { profile },
+      imageUrl: profile,
       profileUrl: "https://github.com/dillionverma",
     },
     {
@@ -19,8 +19,21 @@ const ManProjects = () => {
         profileUrl: "https://github.com/dillionverma",
       },
   ];
-  const [projects, setProjects] = useState<any[]>([]);
-  const [allManagers, setAllManagers] = useState<any[]>([]);
+  interface Project {
+    _id: string;
+    name: string;
+    status: string;
+    endDate: string;
+    projectManagerId: string;
+  }
+
+  const [projects, setProjects] = useState<Project[]>([]);
+  interface Manager {
+    user: string;
+    name: string;
+  }
+
+  const [allManagers, setAllManagers] = useState<Manager[]>([]);
 
   useEffect(() => {
     const fetchProjects = async () => {

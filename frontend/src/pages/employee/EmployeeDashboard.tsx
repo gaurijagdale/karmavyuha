@@ -1,7 +1,5 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import TextGen from "@/components/TextGen";
-import { AnimatedList } from "@/components/magicui/animated-list";
 import { Link } from "react-router-dom";
 import Notification from "../../components/Notification";
 import { Calendar } from "@/components/ui/calendar";

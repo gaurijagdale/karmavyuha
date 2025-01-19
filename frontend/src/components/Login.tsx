@@ -17,7 +17,8 @@ const Login = () => {
     const [userPassword, setUserPassword] = useState<string>("");
     const [loginMessage, setLoginMessage] = useState<string>("");
     const authContext = useContext(AuthContext);
-    const { isLoggedIn, setIsLoggedIn, email, setEmail } = authContext;
+    const setIsLoggedIn = authContext?.setIsLoggedIn;
+    const setEmail = authContext?.setEmail;
     const navigate = useNavigate();
 
     // Define the type of the response you expect from the server
@@ -42,8 +43,12 @@ const Login = () => {
             // Handle response data
             console.log("Login successful:", response.data);
             setLoginMessage(response.data.message); // Assuming 'message' is in the response
-            setIsLoggedIn(true);
-            setEmail(userEmail);
+            if (setIsLoggedIn) {
+                setIsLoggedIn(true);
+            }
+            if (setEmail) {
+                setEmail(userEmail);
+            }
             navigate('/');
 
         } catch (error: unknown) {

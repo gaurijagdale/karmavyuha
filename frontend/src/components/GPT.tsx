@@ -1,4 +1,3 @@
-import React from "react";
 import TextGen from "@/components/TextGen";
 
 const GPT = () => {

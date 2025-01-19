@@ -1,5 +1,4 @@
-import React, { useState, useEffect } from "react";
-import TextGen from "@/components/TextGen";
+import { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
 import profile from "../../assets/profile2.png";
 import axios from "axios";

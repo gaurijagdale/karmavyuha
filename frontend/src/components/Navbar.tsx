@@ -1,26 +1,25 @@
-import React, { useContext, useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Button } from "@/components/ui/button";
 import { Link } from "react-router-dom";
 import GPT from "./GPT";
-import logo from "../assets/Logo.png";
+// import logo from "../assets/Logo.png";
 import logoo from "../assets/Logoo.jpg";
 
 import { AuthContext } from "../contexts/AuthContext";
 
-interface User {
-  _id: string;
-  email: string;
-  password: string;
-  role: string;
-}
 
 const Navbar = () => {
   const authContext = useContext(AuthContext);
-  const { isLoggedIn, setIsLoggedIn, email, setEmail } = authContext;
-  const [user, setUser] = useState<User | null>(null);
-  const role = user?.role;
+  const email = authContext?.email;
   const [userRole, setUserRole] = useState<string>("");
+  interface User {
+    email: string;
+    role: string;
+    // Add other user properties here
+  }
+
+  const [user, setUser] = useState<User | null>(null);
 
   useEffect(() => {
     const fetchUserData = async () => {
@@ -53,12 +52,10 @@ const Navbar = () => {
           <Link to="/employeedashboard">
             <Button variant="outline">Overview Emp</Button>
           </Link>
-          <Link to="/employeeprojects">
-            <Button variant="outline">Projects</Button>
-          </Link>
-          <Link to="/employeeleaderboard">
+          
+          {/* <Link to="/employeeleaderboard">
             <Button variant="outline">Leaderboard</Button>
-          </Link>
+          </Link> */}
 
           <Link to={`/empprofile/${empID}`}>
             <Button variant="outline">Profile</Button>
