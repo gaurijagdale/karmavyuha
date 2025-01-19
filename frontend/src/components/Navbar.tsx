@@ -35,7 +35,7 @@ const Navbar = () => {
     return (
         <div className='w-full flex justify-between items-center p-4 bg-gray-900'>
             <Link to="/">
-                <img src={logo} alt="" className='w-28 rounded-full object-cover'/>
+                <img src={logoo} alt="" className='w-20 rounded-full object-cover'/>
             </Link>
 
             <Link to="/employeedashboard"><Button variant="outline">Overview Emp</Button></Link>
