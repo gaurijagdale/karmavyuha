@@ -25,9 +25,9 @@ const App = () => {
 
   return (
     <div className="w-full">
-      {location.pathname !== "/" && <Navbar />}
+      {location.pathname !== "/login" && <Navbar />}
       <Routes>
-        <Route path="/" element={<Login />} />
+        <Route path="/" element={<LandingMain />} />
         <Route path="/employeedashboard" element={<EmployeeDashboard />} />
         <Route path="/empprofile/:id" element={<EmpProfile/>} />
         <Route path="/empreport/:id" element={<EmpReport/>} />
