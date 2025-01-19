@@ -1,6 +1,4 @@
-import mongoose from 'mongoose';
-import Employee from './Employee.model'; // Assuming Employee model is available
-
+const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const ProjectManagerSchema = new Schema(
@@ -47,4 +45,4 @@ const ProjectManagerSchema = new Schema(
 
 const ProjectManager = model('ProjectManager', ProjectManagerSchema);
 
-export default ProjectManager;
+module.exports = ProjectManager;
