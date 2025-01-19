@@ -119,11 +119,11 @@ const Login = () => {
             )}
 
 
-            <p>Manager credentials</p>
+            <p className="text-xl">Manager credentials</p>
             <p>Email: amit.sharma@gmail.com</p>
             <p>Password: hashed_password_1</p>
 <br /><br />
-            <p>Employee credentials</p>
+            <p className="text-xl">Employee credentials</p>
             <p>Email: pooja.verma@gmail.com</p>
             <p>Password: hashed_password_2</p>
         </div>
