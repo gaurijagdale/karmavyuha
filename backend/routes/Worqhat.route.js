@@ -217,5 +217,64 @@ Provide a professional and concise report that can be shared with stakeholders.
 });
 
 
+router.post('/text/notprojectreportgen', async (req, res) => {
+    // Extract data from the request body
+    let { projectData } = req.body;
+
+    const prompt = `
+        Based on the following project details:
+
+        - **Project Name**: ${projectData.project.name}
+        - **Project Description**: ${projectData.project.description}
+        - **Current Status**: ${projectData.project.status}
+
+        Please generate the following information:
+        1. A clear step-by-step and detailed workflow to start and complete this project.
+        2. Required skills and their relevance to each stage of the project.
+        3. The estimated time (in months) required to complete the project, considering industry standards and the complexity described.
+        4. Key information or resources required to initiate this project successfully.
+        5. Recommendations for assigning tasks to team members based on the roles they can play.
+
+        Ensure the response is concise, structured, and easy to follow.
+    `;
+
+    // Create the payload for the external API
+    const data = JSON.stringify({
+        question: prompt,
+        model: "aicon-v4-nano-160824",
+        randomness: 0.5,
+        stream_data: false,
+        training_data: "",
+        response_type: "text",
+    });
+
+    // Configure the external API request
+    const config = {
+        method: 'post',
+        url: 'https://api.worqhat.com/api/ai/content/v4',
+        headers: {
+            'Content-Type': 'application/json',
+            "Authorization": `Bearer ${worqhatapikey}`,
+        },
+        data: data,
+    };
+
+    try {
+        // Send the request to the external API
+        const response = await axios(config);
+
+        // Send the API's response back to the frontend
+        res.status(200).json(response.data);
+    } catch (error) {
+        console.error(error);
+
+        // Handle errors and respond with a meaningful message
+        res.status(500).json({
+            error: 'An error occurred while processing your request.',
+            details: error.message,
+        });
+    }
+});
+
 // Export the router
 module.exports = router;

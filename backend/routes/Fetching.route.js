@@ -75,6 +75,7 @@ router.get("/employee/:id", async (req, res) => {
     }
 });
 
+
 router.get("/project/:id", async (req, res) => {
     try {
         const projectID = req.params.id;
@@ -106,10 +107,6 @@ router.get("/project/:id", async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
-
-
-
-
 
 
 
