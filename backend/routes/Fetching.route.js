@@ -54,7 +54,7 @@ router.get("/project/:id", async (req, res) => {
         const projectID = req.params.id;
 
         // Fetch the project details
-        const project = await Project.find({ _id: projectID });
+        const project = await Project.findById(projectID);
 
         if (!project) {
             return res.status(404).json({ message: "Project not found" });
@@ -69,7 +69,6 @@ router.get("/project/:id", async (req, res) => {
         // Fetch the project manager
         const projectManager = await Manager.findOne(
             { user: project.projectManagerId }, // Match the manager ID
-            { user: 1, name: 1 } // Project only _id and name fields
         );
 
         res.status(200).json({
