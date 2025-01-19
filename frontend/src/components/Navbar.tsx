@@ -29,8 +29,8 @@ const Navbar = () => {
                 .catch(error => console.error('Error fetching user:', error));
         }
     }, [email]);
-
-    console.log('user:', user?.role);
+    
+    console.log('user:', role);
 
     const empID = '678c35d42382e89dad523e48';
     return (
