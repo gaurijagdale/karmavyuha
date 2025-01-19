@@ -17,6 +17,8 @@ const Navbar = () => {
             <Link to="/employeeleaderboard"><Button variant="outline">Leaderboard</Button></Link>
 
             <Link to={`/empprofile/${empID}`}><Button variant="outline">Profile</Button></Link>
+            <Link to="/manager/allemployees"><Button variant="outline">All Employees</Button></Link>
+            <Link to="/manager/projects"><Button variant="outline">Projects</Button></Link>
 
             <button><GPT/></button>
             <Link to="/login"><Button variant="outline">Login</Button></Link>

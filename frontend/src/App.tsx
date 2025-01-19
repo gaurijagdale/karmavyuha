@@ -16,6 +16,8 @@ import EmpLeaderboard from "./pages/employee/EmpLeaderboard";
 import ProjectSpecific from "./pages/employee/ProjectSpecific";
 import EmpProfile from "./pages/employee/EmpProfile";
 import EmpReport from "./pages/employee/EmpReport";
+import ManEmployees from "./pages/manager/ManEmployees";
+import ManProjects from "./pages/manager/ManProjects";
 
 const App = () => {
   const location = useLocation(); 
@@ -33,6 +35,10 @@ const App = () => {
         <Route path="/employeeleaderboard" element={<EmpLeaderboard />} />
         <Route path="/employeedashboard" element={<EmployeeDashboard />} />
         <Route path="/login" element={<Login />} />
+        
+        <Route path="/manager/allemployees" element={<ManEmployees />} />
+        <Route path="/manager/projects" element={<ManProjects />} />
+
       </Routes>
     </div>
   );
