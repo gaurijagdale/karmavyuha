@@ -5,7 +5,7 @@ const Project = require("../models/Project.model");
 const Manager = require("../models/Manager.model");
 const Task = require("../models/Task.model");
 const Employee = require("../models/Employee.model");
-const User = require("../models/User.model");
+const User = require("../models/Users.model");
 
 
 router.get("/user/:email", async (req, res) => {
