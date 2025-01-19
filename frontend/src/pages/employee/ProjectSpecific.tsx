@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import TextGen from "@/components/TextGen";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import profile from "../../assets/profile2.png";
 
 const ProjectSpecific = () => {
@@ -58,51 +58,51 @@ const ProjectSpecific = () => {
             </div>
           </div>
 
-          {/* Project Details and Team */}
-          <div className="w-full grid grid-cols-4 gap-4">
-            <div className="col-span-1 bg-gray-900 rounded-xl h-96 p-4 space-y-7">
-              <h2 className="text-lg font-semibold mb-2 text-center">
-                Project Manager
-              </h2>
-              <div className="flex flex-col justify-center items-center space-y-5">
-                <img
-                  src={profile}
-                  alt={projectManager.name}
-                  className="w-28 h-28 rounded-full"
-                />
-                <p className="text-zinc-300 text-lg font-semibold">
-                  {projectManager.name}
+        {/* Project Details and Team */}
+        <div className="w-full grid grid-cols-4 gap-4">
+          <div className="col-span-1 bg-gray-900 rounded-xl h-96 p-4 space-y-7">
+            <h2 className="text-lg font-semibold mb-2 text-center">
+              Project Manager
+            </h2>
+            <div className="flex flex-col justify-center items-center space-y-5">
+              <img
+                src={profile}
+                alt={projectManager.name}
+                className="w-28 h-28 rounded-full"
+              />
+              <p className="text-zinc-300 text-lg font-semibold">
+                {projectManager.name}
+              </p>
+              <div className="flex flex-col justify-center items-center space-y-1">
+                <p className="text-zinc-400 font-semibold text-sm">
+                  {projectManager.department}
                 </p>
-                <div className="flex flex-col justify-center items-center space-y-1">
-                  <p className="text-zinc-400 font-semibold text-sm">
-                    {projectManager.department}
-                  </p>
-                  <p className="text-zinc-400 font-semibold text-sm">
-                    {projectManager.email}
-                  </p>
-                  <p className="text-zinc-400 font-semibold text-sm">
-                    {projectManager.phoneNumber}
-                  </p>
-                </div>
+                <p className="text-zinc-400 font-semibold text-sm">
+                  {projectManager.email}
+                </p>
+                <p className="text-zinc-400 font-semibold text-sm">
+                  {projectManager.phoneNumber}
+                </p>
               </div>
             </div>
-            <div className="col-span-2 bg-gray-900 rounded-xl h-96 p-4">
-              <h2 className="text-lg font-semibold mb-2">Project Info</h2>
-              <div className="space-y-4 bg-slate-700 rounded-xl p-5">
-                <p className="text-zinc-300">{project.description}</p>
-              </div>
-              <div className="flex space-x-4">
-                <p className="text-black text-sm bg-green-300 py-1 px-3 rounded-full mt-4">
-                  Start Date: {new Date(project.startDate).toDateString()}
-                </p>
-                <p className="text-black text-sm bg-red-300 py-1 px-3 rounded-full mt-4">
-                  End Date: {new Date(project.endDate).toDateString()}
-                </p>
-              </div>
-              <div>
-                <button>Report</button>
-              </div>
+          </div>
+          <div className="col-span-2 bg-gray-900 rounded-xl h-96 p-4">
+            <h2 className="text-lg font-semibold mb-2">Project Info</h2>
+            <div className="space-y-4 bg-slate-700 rounded-xl p-5">
+              <p className="text-zinc-300">{project.description}</p>
             </div>
+            <div className="flex space-x-4">
+              <p className="text-black text-sm bg-green-300 py-1 px-3 rounded-full mt-4">
+                Start Date: {new Date(project.startDate).toDateString()}
+              </p>
+              <p className="text-black text-sm bg-red-300 py-1 px-3 rounded-full mt-4">
+                End Date: {new Date(project.endDate).toDateString()}
+              </p>
+            </div>
+            <Link to={`/projectreport/${project._id}`}>
+              <button>Report</button>
+            </Link>
+          </div>
 
             <div className="col-span-1 bg-gray-900 rounded-xl h-96 p-4">
               <h2 className="text-lg font-semibold mb-2">Team Members</h2>

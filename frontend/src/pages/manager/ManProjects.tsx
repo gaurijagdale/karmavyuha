@@ -40,7 +40,7 @@ const ManProjects = () => {
                         <div className='w-96 h-64 bg-gray-900 rounded-xl p-4'>
                             <h1 className="text-white text-xl">{project.name} | <span className='text-zinc-400'> {project.status}</span></h1>
                             <p className="text-gray-400">Deadline: {new Date(project.endDate).toLocaleDateString()}</p>
-                            
+
                             {/* Display project manager's name */}
                             {manager ? (
                                 <p className="text-gray-400">Project Manager: {manager.name}</p>
