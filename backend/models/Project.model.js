@@ -1,5 +1,4 @@
-import mongoose from 'mongoose';
-
+const mongoose = require('mongoose');
 const { Schema, model } = mongoose;
 
 const ProjectSchema = new Schema(
@@ -53,4 +52,4 @@ const ProjectSchema = new Schema(
 
 const Project = model('Project', ProjectSchema);
 
-export default Project;
+module.exports = Project;
