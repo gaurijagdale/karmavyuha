@@ -42,7 +42,7 @@ const EmployeeDashboard = () => {
         <div className="w-full grid grid-cols-3 p-10 h-screen gap-4">
             <div aria-label="left" className="flex flex-col col-span-2 gap-4">
                 <div className="h-96 p-7 bg-gray-900 rounded-xl space-y-10">
-                    <h1 className="text-3xl font-semibold">All Projects</h1>
+                    <h1 className="text-2xl font-semibold">All Projects</h1>
 
                     <div className="flex flex-col gap-4 h-52 overflow-y-auto ">
                         {projects.map((project) => (
@@ -65,11 +65,11 @@ const EmployeeDashboard = () => {
                 </div>
                 <div className="grid grid-cols-2 gap-4">
                     <div className="col-span-1 bg-gray-900 h-96 p-7">
-                        <h1 className="text-3xl font-semibold">Upcoming Projects</h1>
+                        <h1 className="text-2xl font-semibold">Upcoming Projects</h1>
                         <div></div>
                     </div>
                     <div className="col-span-1 p-7 bg-gray-900 h-96 space-y-3">
-                        <h1 className="text-3xl font-semibold">To Do</h1>
+                        <h1 className="text-2xl font-semibold">To Do</h1>
                         <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-hide">
                             <ol className="space-y-4 w-full">
                                 <li>
@@ -180,7 +180,7 @@ const EmployeeDashboard = () => {
 
             <div aria-label="right" className="col-span-1 flex flex-col gap-4">
                 <div className="h-96 p-5 bg-gray-900 rounded-xl space-y-3">
-                    <h1 className="text-3xl font-semibold">Notifications</h1>
+                    <h1 className="text-2xl font-semibold">Notifications</h1>
                     <div className="text-black space-y-3 h-72 overflow-y-auto scrollbar-hide">
                         <Notification
                             name="Sample Notification"
