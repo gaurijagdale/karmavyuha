@@ -1,6 +1,7 @@
 import React, { useState, useContext } from "react";
 import axios from "axios";
 import { AuthContext } from '../contexts/AuthContext';
+import { Link } from "react-router-dom";
 
 import { useNavigate } from 'react-router-dom';
 
@@ -53,6 +54,9 @@ const Login = () => {
 
     return (
         <div className="p-10 text-white">
+          <Link to="/">
+            Back
+          </Link>
             <form method="post" onSubmit={handleLogin} className="max-w-sm mx-auto">
                 <div className="mb-5">
                     <label
@@ -67,8 +71,8 @@ const Login = () => {
                         name="email"
                         value={userEmail}
                         onChange={(e) => setUserEmail(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
-                        placeholder="name@flowbite.com"
+                        className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="name@gmail.com"
                         required
                     />
                 </div>
@@ -85,7 +89,8 @@ const Login = () => {
                         name="password"
                         value={userPassword}
                         onChange={(e) => setUserPassword(e.target.value)}
-                        className="bg-gray-50 border border-gray-300 text-white text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+                        placeholder="Password"
+                        className="bg-gray-50 border border-gray-300 text-black text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
                         required
                     />
                 </div>
