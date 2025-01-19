@@ -66,7 +66,7 @@ const EmpProfile: React.FC = () => {
 
   return (
     <div className="w-full h-auto p-10 space-y-6 ">
-      <div className="bg-gray-900 p-6 rounded-xl text-white space-y-4 flex items-center justify-between">
+      <div className="bg-gray-900 p-6 rounded-xl text-white flex items-center justify-between">
         <h1 className="text-2xl font-bold">Employee Profile</h1>
         <button
           className="text-2xl font-semibold rounded-full py-2 px-5 bg-slate-500"
