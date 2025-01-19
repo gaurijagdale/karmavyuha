@@ -18,6 +18,7 @@ import EmpProfile from "./pages/employee/EmpProfile";
 import EmpReport from "./pages/employee/EmpReport";
 import ManEmployees from "./pages/manager/ManEmployees";
 import ManProjects from "./pages/manager/ManProjects";
+import ProjectReport from "./pages/manager/ProjectReport";
 
 const App = () => {
   const location = useLocation(); 
@@ -38,6 +39,7 @@ const App = () => {
         
         <Route path="/manager/allemployees" element={<ManEmployees />} />
         <Route path="/manager/projects" element={<ManProjects />} />
+        <Route path="/projectreport/:id" element={<ProjectReport />} />
 
       </Routes>
     </div>
