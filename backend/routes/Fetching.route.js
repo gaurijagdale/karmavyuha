@@ -15,7 +15,33 @@ router.get("/projects", async (req, res) => {
     }
 });
 
-router.get("emplo")
+router.get("/employees", async (req, res) => {
+    try {
+        const employees = await Employee.find();
+        res.status(200).json(employees);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.get("/tasks", async (req, res) => {
+    try {
+        const tasks = await Task.find();
+        res.status(200).json(tasks);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
+router.get("/managers", async (req, res) => {   
+    try {
+        const managers = await Manager.find();
+        res.status(200).json(managers);
+    } catch (error) {
+        res.status(500).json({ message: error.message });
+    }
+});
+
 
 router.get("/employee/:id", async (req, res) => {
     try {
