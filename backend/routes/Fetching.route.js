@@ -15,6 +15,8 @@ router.get("/projects", async (req, res) => {
     }
 });
 
+router.get("emplo")
+
 router.get("/employee/:id", async (req, res) => {
     try {
         const employeeID = req.params.id;
@@ -52,7 +54,7 @@ router.get("/project/:id", async (req, res) => {
         const projectID = req.params.id;
 
         // Fetch the project details
-        const project = await Project.findById(projectID);
+        const project = await Project.find({ _id: projectID });
 
         if (!project) {
             return res.status(404).json({ message: "Project not found" });
@@ -79,5 +81,12 @@ router.get("/project/:id", async (req, res) => {
         res.status(500).json({ message: error.message });
     }
 });
+
+
+
+
+
+
+
 
 module.exports = router;
